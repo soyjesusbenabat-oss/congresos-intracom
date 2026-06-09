@@ -93,7 +93,6 @@
     {src:"assets/logos/ufsc-t.png",nm:"Universidade Federal de Santa Catarina"},
     {src:"assets/logos/logo_uaemex_escudo_una_linea_color.png",nm:"Universidad Autónoma del Estado de México"},
     {src:"assets/logos/logo_uca_horizontal_color.png",nm:"Universidad de Cádiz"},
-    {src:"assets/logos/logo_uke_enna_kore.png",nm:"Università degli Studi di Enna Kore"},
     {src:"assets/logos/logo_uma_horizontal_color.png",nm:"Universidad de Málaga"},
     {src:"assets/logos/logo_unipa_2020.png",nm:"Università degli Studi di Palermo"},
     {src:"assets/logos/logo_unitus_tuscia.png",nm:"Università degli Studi della Tuscia"},
