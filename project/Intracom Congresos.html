@@ -372,36 +372,36 @@
           <div class="form-row">
             <div class="field">
               <label for="f-name">Nombre y apellidos <span class="req">*</span></label>
-              <input id="f-name" type="text" data-required placeholder="Tu nombre">
+              <input id="f-name" name="Nombre y apellidos" type="text" data-required placeholder="Tu nombre">
             </div>
             <div class="field">
               <label for="f-entity">Entidad / Universidad <span class="req">*</span></label>
-              <input id="f-entity" type="text" data-required placeholder="Universidad, facultad o asociación">
+              <input id="f-entity" name="Entidad o Universidad" type="text" data-required placeholder="Universidad, facultad o asociación">
             </div>
           </div>
           <div class="form-row">
             <div class="field">
               <label for="f-role">Cargo <span class="opt">opcional</span></label>
-              <input id="f-role" type="text" placeholder="Ej. presidente del comité">
+              <input id="f-role" name="Cargo" type="text" placeholder="Ej. presidente del comité">
             </div>
             <div class="field">
               <label for="f-email">Email de contacto <span class="req">*</span></label>
-              <input id="f-email" type="email" data-required placeholder="tu@email.com">
+              <input id="f-email" name="email" type="email" data-required placeholder="tu@email.com">
             </div>
           </div>
           <div class="form-row">
             <div class="field">
               <label for="f-phone">Teléfono <span class="opt">opcional</span></label>
-              <input id="f-phone" type="tel" placeholder="+34 ...">
+              <input id="f-phone" name="Teléfono" type="tel" placeholder="+34 ...">
             </div>
             <div class="field">
               <label for="f-date">Fecha estimada del congreso <span class="req">*</span></label>
-              <input id="f-date" type="text" data-required placeholder="Ej. octubre 2026" onfocus="this.type='month'" onblur="if(!this.value)this.type='text'">
+              <input id="f-date" name="Fecha estimada" type="text" data-required placeholder="Ej. octubre 2026" onfocus="this.type='month'" onblur="if(!this.value)this.type='text'">
             </div>
           </div>
           <div class="field full">
             <label for="f-size">Nº aproximado de participantes <span class="opt">opcional</span></label>
-            <input id="f-size" type="text" placeholder="Ej. 150">
+            <input id="f-size" name="Participantes estimados" type="text" placeholder="Ej. 150">
           </div>
           <div class="field full">
             <label>¿Qué servicios te interesan? <span class="opt">opcional</span></label>
@@ -409,7 +409,7 @@
           </div>
           <div class="field full">
             <label for="f-more">Cuéntanos más sobre tu congreso <span class="opt">opcional</span></label>
-            <textarea id="f-more" placeholder="Temática, formato, objetivos, lo que necesites..."></textarea>
+            <textarea id="f-more" name="Información adicional" placeholder="Temática, formato, objetivos, lo que necesites..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-lg form-submit">Enviar solicitud <span class="arr">→</span></button>
         </form>
