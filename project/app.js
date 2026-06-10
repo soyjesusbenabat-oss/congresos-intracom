@@ -123,7 +123,7 @@
   /* ---------- FORM ---------- */
   const form=$("#contactForm");
   if(form){
-    form.addEventListener("submit",(e)=>{
+    form.addEventListener("submit",async(e)=>{
       e.preventDefault();
       let ok=true;
       $$("[data-required]",form).forEach(f=>{
@@ -133,8 +133,29 @@
       const email=$("#f-email",form);
       if(email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ email.classList.add("err"); ok=false; }
       if(!ok){ form.querySelector(".err")?.scrollIntoView?.({behavior:"smooth",block:"center"}); return; }
-      form.style.display="none";
-      $("#formOk").classList.add("show");
+
+      const btn=form.querySelector(".form-submit");
+      btn.disabled=true; btn.textContent="Enviando…";
+
+      try{
+        const data=new FormData(form);
+        // collect checked services
+        const checked=[...$$(".check-pill input:checked",form)].map(i=>i.value).join(", ");
+        if(checked) data.set("servicios_interes", checked);
+
+        const res=await fetch("https://api.web3forms.com/submit",{method:"POST",body:data});
+        const json=await res.json();
+        if(json.success){
+          form.style.display="none";
+          $("#formOk").classList.add("show");
+        } else {
+          btn.disabled=false; btn.innerHTML="Enviar solicitud <span class='arr'>→</span>";
+          alert("Hubo un error al enviar. Por favor escríbenos a info@intracom.es");
+        }
+      } catch(err){
+        btn.disabled=false; btn.innerHTML="Enviar solicitud <span class='arr'>→</span>";
+        alert("Error de conexión. Por favor escríbenos a info@intracom.es");
+      }
     });
     $$("input,select,textarea",form).forEach(f=>f.addEventListener("input",()=>f.classList.remove("err")));
   }
