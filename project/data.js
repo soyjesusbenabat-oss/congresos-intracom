@@ -108,20 +108,13 @@
 
   /* ============ PORTFOLIO (S8) ============ */
   const congresos=[
-    {name:"Congreso Intracom",disc:"Comunicación y Divulgación Científica",place:"La Laguna, Tenerife",ed:"5 ediciones",fmt:"Presencial",tone:"navy",img:"assets/congreso-intracom.jpg",
-     desc:"Organizado junto a la Universidad de La Laguna. Referente en transferencia del conocimiento en el espacio iberoamericano."},
-    {name:"AI Ethics",disc:"IA y Derechos Humanos",place:"Madrid",ed:"2026",fmt:"Presencial",tone:"red",img:"assets/congreso-aiethics.webp",imgBg:"#0a1830",imgPos:"center top",
-     desc:"Debate científico sobre el marco ético y jurídico de la IA en la sociedad."},
-    {name:"DDHHGlobal",disc:"Derechos Humanos y Globalización",place:"La Laguna, Tenerife",ed:"2026",fmt:"Presencial",tone:"sky",img:"assets/congreso-ddhhglobal.jpg",imgPos:"center top",
-     desc:"Multidisciplinar: derecho, filosofía, comunicación, sociología. Pensamiento crítico e internacional."},
-    {name:"Mediaethics",disc:"Ética de la Comunicación",place:"Segovia",ed:"2026",fmt:"Presencial",tone:"red",img:"assets/congreso-mediaethics.jpg",
-     desc:"Responsabilidad de la comunicación y los algoritmos en la sociedad contemporánea."},
-    {name:"ICOM Food",disc:"Comunicación y Alimentación Saludable",place:"Granada",ed:"2026",fmt:"Híbrido",tone:"sky",img:"assets/congreso-icomfood.png",imgBg:"#FFFFFF",imgPos:"center top",lightImg:true,
-     desc:"Congreso de comunicación y educación para una alimentación saludable, junto a las Universidades de Granada y Sevilla. Divulgación rigurosa frente a la desinformación."},
-    {name:"Gendercom",disc:"Comunicación y Género",place:"Granada",ed:"2026",fmt:"Presencial",tone:"navy",
-     desc:"Estudios de género, tecnología y equidad con carácter internacional."},
-    {name:"COM-Vino",disc:"Comunicación del Vino",place:"Lanzarote",ed:"2026",fmt:"Presencial",tone:"red",img:"assets/congreso-comvino.jpg",
-     desc:"Cruce entre enología, cultura y comunicación en un entorno volcánico único."}
+    {name:"Congreso Intracom",url:"https://congresointracom.com/",disc:"Transferencia",fmt:"Internacional",place:"La Laguna (Tenerife)",date:"2–4 diciembre 2026",ed:"V edición",tone:"navy",img:"assets/congreso-intracom.jpg",desc:"Investigación y transferencia en comunicación y divulgación de las ciencias"},
+    {name:"AI Ethics",url:"https://aiethics.portalintracom.com/",disc:"Ética de la IA",fmt:"Internacional",place:"Málaga",date:"8–9 abril 2027",ed:"I edición",tone:"red",img:"assets/congreso-aiethics.webp",imgBg:"#0a1830",imgPos:"center top",desc:"Congreso Internacional de Ética de la Inteligencia Artificial"},
+    {name:"MediaEthics",url:"https://mediaethicsconference.com/",disc:"Comunicación",fmt:"Internacional",place:"Florianópolis (Brasil)",date:"23–25 marzo 2027",ed:"IV edición",tone:"red",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Herc%C3%ADlio_Luz_Florianopolis.jpg?width=1200",desc:"Congreso Internacional de Ética de la Comunicación"},
+    {name:"Gendercom",url:"https://gendercom.org/",disc:"Género",fmt:"Internacional",place:"Granada",date:"7–9 octubre 2026",ed:"III edición",tone:"navy",img:"https://commons.wikimedia.org/wiki/Special:FilePath/The_whole_Alhambra_Granada_Spain.jpg?width=1200",desc:"Congreso Internacional de Comunicación y Género"},
+    {name:"COM–Vino",url:"https://comvino.portalintracom.com/",disc:"Cultura y vino",fmt:"Internacional",place:"Lanzarote",date:"27–30 noviembre 2026",ed:"I edición",tone:"red",img:"assets/congreso-comvino.jpg",desc:"Congreso Internacional de Comunicación del Vino"},
+    {name:"ICOM–Health&Food",url:"https://icomfood.portalintracom.com/",disc:"Salud",fmt:"Internacional",place:"Granada",date:"10–12 marzo 2027",ed:"I edición",tone:"sky",img:"assets/congreso-icomfood.png",imgBg:"#FFFFFF",imgPos:"center top",lightImg:true,desc:"Comunicación y educación para una alimentación saludable"},
+    {name:"DDHHGlobal",url:"https://ddhhglobal.portalintracom.com/",disc:"Derechos humanos",fmt:"Internacional",place:"Madrid",date:"17–19 marzo 2027",ed:"Próxima edición",tone:"sky",img:"https://ddhhglobal.portalintracom.com/sede-ucm.jpg",desc:"Congreso Internacional de Derechos Humanos y Globalización"}
   ];
   const pg=document.getElementById("portfolioGrid");
   if(pg){
@@ -132,9 +125,10 @@
         <div class="pcard-bg${c.img?'':' ph'}${c.lightImg?' pcard-bg--light':''}" data-tone="${c.tone}"${c.img?` style="background-image:url('${c.img}');background-size:cover;background-position:${c.imgPos||'center'};${c.imgBg?`background-color:${c.imgBg};`:''}"`:''}>${c.img?'':`<span class="ph-label">Foto — ${c.name}</span>`}</div>
         <div class="pcard-top"><span class="tag tag-disc">${c.disc}</span><span class="tag tag-fmt">${c.fmt}</span></div>
         <div class="pcard-body">
-          <div class="pcard-meta">${c.place}<span class="sep">·</span>${c.ed}</div>
+          <div class="pcard-meta">${c.place}<span class="sep">·</span>${c.date}</div>
           <h3>${c.name}</h3>
           <p class="pcard-desc">${c.desc}</p>
+          <div class="pcard-foot"><span class="pcard-ed">${c.ed}</span><a class="pcard-link" href="${c.url}" target="_blank" rel="noopener">Visitar el congreso ↗</a></div>
         </div>`;
       pg.appendChild(card);
     });

@@ -1,0 +1,19 @@
+:root{--font-text:"Schibsted Grotesk",system-ui,sans-serif;--font-serif:"Newsreader",Georgia,serif}
+body{font-family:var(--font-display)}
+h1,h2,h3,h4{line-height:1.06}
+.eyebrow{font-size:12px;letter-spacing:.2em;gap:12px;margin:0 0 18px}
+.eyebrow::before{display:none}
+.eyebrow::after{content:"";height:1px;width:40px;background:currentColor;display:inline-block}
+.eyebrow b{font-weight:500;color:var(--ink)}
+.section--navy .eyebrow b{color:#fff}
+.h-title{font-size:clamp(32px,4.4vw,56px);font-weight:800;letter-spacing:-.035em}
+.lead{font-size:clamp(17px,1.35vw,19.5px)}
+.hero-title{font-size:clamp(40px,5.6vw,76px);letter-spacing:-.04em;line-height:.98}
+.hero[data-layout="asym"] .hero-title{font-size:clamp(38px,4.9vw,66px)}
+.hero-sub{font-size:clamp(17px,1.45vw,20px)}
+.ibero-title,.cta-title{font-size:clamp(32px,4.4vw,56px);letter-spacing:-.035em;line-height:1.06}
+.h-title em,.hero-title em,.ibero-title em,.cta-title em{font-family:var(--font-serif);font-style:italic;font-weight:500;letter-spacing:-.02em;color:var(--accent)}
+.section--navy .ibero-title em,.section--navy .cta-title em{color:var(--sky)}
+.hero-title .hl::after,.hero-title .hl::before{display:none}
+.benefit .btn{white-space:normal;max-width:100%;padding-inline:20px;font-size:15px;text-align:center}
+.pcard-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18)}.pcard-ed{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}.pcard-link{position:relative;z-index:3;font-weight:600;font-size:14px;color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}.pcard-link:hover{text-decoration-thickness:2px}
