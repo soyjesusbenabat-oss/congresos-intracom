@@ -156,35 +156,6 @@
     });
   }
 
-  /* ============ PRICING (S10) ============ */
-  const plans=[
-    {name:"Esencial",for_:"Para congresos que ya tienen parte de la organización resuelta y necesitan apoyo en áreas concretas.",
-     price:"1.500",feats:["Web del congreso","Gestión de inscripciones y pagos","Atención básica a participantes","Certificados de asistencia"],pre:null,featured:false},
-    {name:"Completo",for_:"Para comités que quieren delegar la gestión operativa completa y centrarse en el contenido científico.",
-     price:"3.500",pre:"Todo lo del Esencial, más:",feats:["Secretaría Técnica Integral","Plataforma de revisión de comunicaciones","Soporte técnico durante el evento","Comunicación y difusión básica"],featured:true},
-    {name:"Integral",for_:"Para congresos internacionales o con alta complejidad que necesitan una gestión 360°.",
-     price:"6.000",pre:"Todo lo del Completo, más:",feats:["Grabación y producción audiovisual","Difusión completa en la red iberoamericana","Comunicación en varios idiomas","Coordinación con proveedores externos"],featured:false}
-  ];
-  const pgr=document.getElementById("pricingGrid");
-  if(pgr){
-    plans.forEach((p,i)=>{
-      const card=el("article","plan reveal"+(p.featured?" featured":""));
-      if(i) card.dataset.d=i;
-      card.innerHTML=`
-        ${p.featured?'<span class="plan-badge">★ Más contratado</span>':''}
-        <div class="plan-name">Paquete · ${p.name}</div>
-        <p class="plan-for">${p.for_}</p>
-        <div class="plan-price"><span class="from">Desde</span><span class="amt">${p.price} €</span></div>
-        <p class="plan-note">Precio orientativo. Solicita tu propuesta personalizada.</p>
-        <a href="#contacto" class="btn ${p.featured?'btn-primary':'btn-ghost'}">Solicitar propuesta</a>
-        <ul class="plan-feats">
-          ${p.pre?`<li class="pf-pre" style="display:block">${p.pre}</li>`:''}
-          ${p.feats.map(f=>`<li>${check}${f}</li>`).join("")}
-        </ul>`;
-      pgr.appendChild(card);
-    });
-  }
-
   /* ============ FAQ (S11) ============ */
   const faqs=[
     {q:"¿Podéis encargaros solo de una parte del congreso?",a:"Sí. Puedes contratarnos para la gestión completa o para servicios concretos: solo la secretaría técnica, solo la web, solo la plataforma de comunicaciones. Nos adaptamos a lo que tu comité ya tiene resuelto."},
@@ -193,7 +164,6 @@
     {q:"¿Qué pasa con los derechos de las grabaciones?",a:"Las grabaciones son propiedad del comité organizador o de la entidad que determine. Intracom las gestiona técnicamente, pero los derechos son siempre vuestros."},
     {q:"¿Tenéis experiencia con congresos internacionales?",a:"Sí. Todos nuestros congresos tienen carácter internacional, con participantes de España y América Latina. Gestionamos comunicaciones en varios idiomas y coordinamos ponentes de distintos países."},
     {q:"¿Intracom organiza el congreso o solo lo gestiona técnicamente?",a:"Depende de lo que necesites. Podemos asumir la gestión técnica y operativa completa o implicarnos también en la difusión y el aval institucional a través de la red Intracom."},
-    {q:"¿Los precios de los paquetes son fijos?",a:"Son orientativos. Cada congreso tiene características propias, por lo que siempre preparamos una propuesta personalizada. La primera reunión es gratuita y sin compromiso."}
   ];
   const fl=document.getElementById("faqList");
   if(fl){

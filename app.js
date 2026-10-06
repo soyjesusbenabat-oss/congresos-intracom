@@ -160,51 +160,6 @@
     $$("input,select,textarea",form).forEach(f=>f.addEventListener("input",()=>f.classList.remove("err")));
   }
 
-  /* ---------- TWEAKS ---------- */
-  const KEY="intracom_tweaks_v1";
-  const defaults={hero:"centered", theme:"light", accent:"red"};
-  let state=Object.assign({},defaults);
-  try{ const s=JSON.parse(localStorage.getItem(KEY)); if(s) state=Object.assign(state,s); }catch(e){}
-
-  const accents={
-    red:{a:"var(--red)",a6:"var(--red-600)",soft:"var(--red-50)"},
-    sky:{a:"var(--sky-deep)",a6:"#236f84",soft:"var(--sky-50)"},
-    navy:{a:"var(--blue)",a6:"var(--blue-deep)",soft:"var(--blue-50)"}
-  };
-  function apply(){
-    const root=document.documentElement;
-    root.setAttribute("data-theme", state.theme);
-    const acc=accents[state.accent]||accents.red;
-    root.style.setProperty("--accent",acc.a);
-    root.style.setProperty("--accent-600",acc.a6);
-    root.style.setProperty("--accent-soft",acc.soft);
-    hero?.setAttribute("data-layout", state.hero);
-    // sync UI
-    $$("[data-tw]").forEach(btn=>{
-      const g=btn.dataset.tw, v=btn.dataset.val;
-      btn.classList.toggle("on", state[g]===v);
-    });
-    try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){}
-  }
-  $$("[data-tw]").forEach(btn=>{
-    btn.addEventListener("click",()=>{ state[btn.dataset.tw]=btn.dataset.val; apply(); });
-  });
-  apply();
-
-  // tweaks visibility — host protocol + local toggle
-  const panel=$("#tweaks");
-  function setTweaks(on){ panel.classList.toggle("hidden",!on); }
-  setTweaks(false);
-  $("#twClose")?.addEventListener("click",()=>{ setTweaks(false); try{parent.postMessage({type:"tweaks:closed"},"*")}catch(e){} });
-  addEventListener("message",(e)=>{
-    const d=e.data||{};
-    if(d.type==="tweaks:toggle") setTweaks(!!d.value);
-    if(d.type==="tweaks:show") setTweaks(true);
-    if(d.type==="tweaks:hide") setTweaks(false);
-  });
-  // local keyboard shortcut to reveal (t)
-  addEventListener("keydown",(e)=>{ if(e.key==="t" && !/input|textarea|select/i.test(document.activeElement.tagName)) setTweaks(panel.classList.contains("hidden")); });
-
   /* year */
   const yr=$("#year"); if(yr) yr.textContent=new Date().getFullYear();
 })();
