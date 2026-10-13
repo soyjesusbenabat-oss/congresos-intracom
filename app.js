@@ -148,6 +148,8 @@
         if(json.success){
           form.style.display="none";
           $("#formOk").classList.add("show");
+          // conversión de Google Ads: solo cuando el envío ha salido bien
+          if(typeof gtag==="function") gtag("event","conversion",{send_to:"AW-18495630635/A0kQCMSarZsdEKvas_NE",value:1.0,currency:"EUR"});
         } else {
           btn.disabled=false; btn.innerHTML="Enviar solicitud <span class='arr'>→</span>";
           alert("Hubo un error al enviar. Por favor escríbenos a info@intracom.es");
