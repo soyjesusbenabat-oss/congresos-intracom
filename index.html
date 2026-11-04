@@ -75,9 +75,36 @@
       </span>
       <h1 class="hero-title reveal" data-d="1">Tu congreso académico, <em class="hl">sin la carga</em> de organizarlo</h1>
       <p class="hero-sub reveal" data-d="2">En Intracom nos encargamos de toda la gestión técnica y operativa para que tú y tu equipo podáis centraros en lo que realmente importa: el contenido científico.</p>
-      <div class="hero-actions reveal" data-d="3">
-        <a href="#contacto" class="btn btn-primary btn-lg">Cuéntanos tu congreso <span class="arr">→</span></a>
-        <a href="#portfolio" class="btn btn-ghost btn-lg">Ver congresos que hemos organizado</a>
+      <div class="hero-lead reveal" data-d="3">
+        <form class="hero-form lead-form" id="heroForm" data-ok="#heroFormOk" novalidate>
+          <input type="hidden" name="access_key" value="b88f1022-d00f-4627-b86e-79ca6d6e02b6">
+          <input type="hidden" name="subject" value="Nueva solicitud de congreso (formulario corto) — Intracom Congresos">
+          <input type="hidden" name="from_name" value="Intracom Congresos Web">
+          <input type="hidden" name="Origen" value="Formulario corto de la portada">
+          <p class="hero-form-title">Pide tu propuesta: te respondemos en menos de 48 horas</p>
+          <div class="hero-form-fields">
+            <div class="field">
+              <label for="h-name">Nombre</label>
+              <input id="h-name" name="Nombre y apellidos" type="text" autocomplete="name" data-required placeholder="Tu nombre">
+            </div>
+            <div class="field">
+              <label for="h-email">Email</label>
+              <input id="h-email" name="email" type="email" autocomplete="email" data-required placeholder="tu@universidad.es">
+            </div>
+            <div class="field">
+              <label for="h-entity">Universidad o entidad</label>
+              <input id="h-entity" name="Entidad o Universidad" type="text" autocomplete="organization" data-required placeholder="Universidad, grupo o asociación">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg form-submit">Quiero mi propuesta <span class="arr">→</span></button>
+          <p class="hero-form-note">Primera reunión sin coste ni compromiso. Los detalles del congreso los vemos después.</p>
+        </form>
+        <div class="form-ok hero-form-ok" id="heroFormOk">
+          <div class="ok-ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>¡Solicitud enviada!</h3>
+          <p>Gracias por contar con Intracom. Te escribiremos en menos de 48 horas para concertar la primera reunión, sin coste y sin compromiso.</p>
+        </div>
+        <a href="#portfolio" class="hero-more">Ver congresos que hemos organizado <span class="arr">→</span></a>
       </div>
     </div>
     <!-- proof bar (centered layout) -->
@@ -355,7 +382,7 @@
       </div>
 
       <div class="reveal" data-d="1">
-        <form class="form-card" id="contactForm" novalidate>
+        <form class="form-card lead-form" id="contactForm" data-ok="#formOk" novalidate>
           <input type="hidden" name="access_key" value="b88f1022-d00f-4627-b86e-79ca6d6e02b6">
           <input type="hidden" name="subject" value="Nueva solicitud de congreso — Intracom Congresos">
           <input type="hidden" name="from_name" value="Intracom Congresos Web">
@@ -386,8 +413,8 @@
               <input id="f-phone" name="Teléfono" type="tel" placeholder="+34 ...">
             </div>
             <div class="field">
-              <label for="f-date">Fecha estimada del congreso <span class="req">*</span></label>
-              <input id="f-date" name="Fecha estimada" type="text" data-required placeholder="Ej. octubre 2026" onfocus="this.type='month'" onblur="if(!this.value)this.type='text'">
+              <label for="f-date">Fecha estimada del congreso <span class="opt">opcional</span></label>
+              <input id="f-date" name="Fecha estimada" type="text" placeholder="Ej. octubre 2026" onfocus="this.type='month'" onblur="if(!this.value)this.type='text'">
             </div>
           </div>
           <div class="field full">

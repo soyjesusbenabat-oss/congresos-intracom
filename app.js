@@ -120,9 +120,11 @@
     });
   });
 
-  /* ---------- FORM ---------- */
-  const form=$("#contactForm");
-  if(form){
+  /* ---------- FORMS (corto de la portada y completo de contacto) ---------- */
+  $$(".lead-form").forEach(form=>{
+    const okBox=$(form.dataset.ok);
+    const btn=form.querySelector(".form-submit");
+    const btnHTML=btn.innerHTML;
     form.addEventListener("submit",async(e)=>{
       e.preventDefault();
       let ok=true;
@@ -130,11 +132,10 @@
         const val=(f.value||"").trim();
         if(!val){ f.classList.add("err"); ok=false; } else f.classList.remove("err");
       });
-      const email=$("#f-email",form);
-      if(email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ email.classList.add("err"); ok=false; }
+      const email=form.querySelector('[type="email"]');
+      if(email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){ email.classList.add("err"); ok=false; }
       if(!ok){ form.querySelector(".err")?.scrollIntoView?.({behavior:"smooth",block:"center"}); return; }
 
-      const btn=form.querySelector(".form-submit");
       btn.disabled=true; btn.textContent="Enviando…";
 
       try{
@@ -147,20 +148,20 @@
         const json=await res.json();
         if(json.success){
           form.style.display="none";
-          $("#formOk").classList.add("show");
+          okBox?.classList.add("show");
           // conversión de Google Ads: solo cuando el envío ha salido bien
           if(typeof gtag==="function") gtag("event","conversion",{send_to:"AW-18495630635/A0kQCMSarZsdEKvas_NE",value:1.0,currency:"EUR"});
         } else {
-          btn.disabled=false; btn.innerHTML="Enviar solicitud <span class='arr'>→</span>";
+          btn.disabled=false; btn.innerHTML=btnHTML;
           alert("Hubo un error al enviar. Por favor escríbenos a info@intracom.es");
         }
       } catch(err){
-        btn.disabled=false; btn.innerHTML="Enviar solicitud <span class='arr'>→</span>";
+        btn.disabled=false; btn.innerHTML=btnHTML;
         alert("Error de conexión. Por favor escríbenos a info@intracom.es");
       }
     });
     $$("input,select,textarea",form).forEach(f=>f.addEventListener("input",()=>f.classList.remove("err")));
-  }
+  });
 
   /* year */
   const yr=$("#year"); if(yr) yr.textContent=new Date().getFullYear();

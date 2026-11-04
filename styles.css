@@ -198,6 +198,17 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.04;let
 .hero[data-layout="centered"] .hero-side-visual{display:none}
 
 /* hero proof bar (centered) */
+/* formulario corto de la portada */
+.hero-lead{width:100%;max-width:820px;margin-top:38px;display:flex;flex-direction:column;align-items:center}
+.hero-form{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(20px,2.6vw,30px);box-shadow:var(--shadow-lg);text-align:left}
+.hero-form-title{font-weight:700;font-size:17px;color:var(--ink);margin:0 0 16px}
+.hero-form-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hero-form .field{margin-bottom:12px}
+.hero-form-note{font-size:13px;color:var(--muted);margin:12px 0 0;text-align:center}
+.hero-form-ok{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg)}
+.hero-more{margin-top:20px;font-weight:600;color:var(--blue);text-decoration:none}
+.hero-more:hover{color:var(--accent)}
+@media (max-width:760px){.hero-form-fields{grid-template-columns:1fr;gap:0}}
 .hero-proof{display:inline-flex;align-items:stretch;gap:clamp(14px,2.6vw,28px);background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:15px clamp(20px,3vw,30px);box-shadow:var(--shadow)}
 .hero-proof .hp-item{display:flex;align-items:center;gap:11px;text-align:left;font-size:14px;color:var(--muted);line-height:1.28;max-width:18ch}
 .hero-proof .hp-item .hp-ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--sky-50);color:var(--sky-deep);flex-shrink:0}
