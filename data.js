@@ -24,22 +24,16 @@
     {icon:ic.clipboard,name:"Secretaría Técnica",no:"01",
      desc:"Coordinamos todas las tareas operativas del congreso antes, durante y después del evento: comunicación con ponentes, gestión de documentación, seguimiento del programa y atención continua al comité organizador.",
      inc:["Coordinación general","Gestión de documentación","Atención a ponentes","Seguimiento de plazos","Cronograma y asignación de salas","Comunicación continua con el comité","Gestión de viajes de ponentes","Personal en sede el día del evento"]},
-    {icon:ic.monitor,name:"Web del Congreso",no:"02",
-     desc:"Diseñamos y desarrollamos la web oficial del congreso: programa, ponentes, inscripción e información práctica. Operativa desde el primer día y adaptada a la identidad de tu evento.",
-     inc:["Diseño personalizado","Ficha de ponentes","Programa interactivo","Área de inscripción integrada","Multiidioma opcional","Mantenimiento y actualizaciones","Intervenciones por horas si ya tienes web"]},
+    {icon:ic.monitor,name:"Plataforma Digital Integrada",no:"02",
+     desc:"Todo el congreso en una sola plataforma propia: la web, el envío y la evaluación de comunicaciones, las inscripciones con pago y factura, el programa, las acreditaciones, la asistencia y los certificados. Cada participante tiene su área privada y el comité sigue el congreso en tiempo real, sin hojas de cálculo.",
+     inc:["Web del congreso con su identidad, en varios idiomas","CFP y difusión en la red Intracom","Envío de propuestas y evaluación en doble ciego","Panel para el comité científico","Inscripción con tarifas por perfil y códigos de descuento","Pago con tarjeta o transferencia y factura automática","Programa interactivo y en PDF","Acreditaciones con QR y control de asistencia","Encuestas y certificados verificables online","Aula virtual para sesiones en línea o híbridas","Área privada para cada participante"]},
     {icon:ic.palette,name:"Identidad Visual y Materiales",no:"03",
      desc:"Creamos la imagen corporativa del congreso y todos los materiales necesarios, tanto digitales como impresos, para que el evento tenga una presencia coherente y profesional.",
      inc:["Logo e identidad corporativa","Cartelería y roll-up","Programa impreso","Acreditaciones y certificados","Producción impresa de materiales","Decoración de la sede"]},
-    {icon:ic.review,name:"Gestión de Comunicaciones Científicas",no:"04",
-     desc:"Gestionamos el proceso científico del congreso a través de nuestra plataforma: envío de propuestas, evaluación por pares y comunicación personalizada con los participantes.",
-     inc:["Plataforma de envío de abstracts","Asignación a revisores","Notificaciones automáticas a autores","Panel de control para el comité científico","CFP en tres idiomas","Difusión del CFP en la red Intracom","Gestión en redes sociales del congreso"]},
-    {icon:ic.card,name:"Inscripciones y Administración",no:"05",
-     desc:"Gestionamos el registro de participantes con tarifas diferenciadas, facturación automatizada y control de pagos en tiempo real. Sin hojas de cálculo ni transferencias manuales.",
-     inc:["Formulario de inscripción online","Tarifas por perfil de participante","Códigos de descuento","Emisión de facturas personalizadas","Gestión fiscal de las facturas","Panel de control en tiempo real","Remisión de certificados online"]},
-    {icon:ic.headset,name:"Producción del Evento",no:"06",
+    {icon:ic.headset,name:"Producción del Evento",no:"04",
      desc:"Cubrimos todos los aspectos técnicos y logísticos el día del congreso, tanto en formato presencial como virtual o híbrido. Nuestro equipo está presente para que nada falle.",
      inc:["Soporte técnico presencial o remoto","Coordinación de salas virtuales","Gestión del streaming","Soporte a ponentes remotos","Grabación de sesiones","Servicio fotográfico y audiovisual","Servicios de catering (opcional)"]},
-    {icon:ic.book,name:"Publicación y Difusión Científica",no:"07",
+    {icon:ic.book,name:"Publicación y Difusión Científica",no:"05",
      desc:"Damos continuidad al conocimiento generado en el congreso a través de distintas vías de publicación científica, desde el libro de actas hasta monografías en editoriales de prestigio.",
      inc:["Publicación de resultados del congreso","Libro de actas (Intracom Ediciones)","Monografía en colección Intracom","Monografía en editoriales de prestigio","Mediación con revista científica para monográfico","Difusión en la red iberoamericana Intracom"]}
   ];
@@ -158,7 +152,7 @@
 
   /* ============ FAQ (S11) ============ */
   const faqs=[
-    {q:"¿Podéis encargaros solo de una parte del congreso?",a:"Sí. Puedes contratarnos para la gestión completa o para servicios concretos: solo la secretaría técnica, solo la web, solo la plataforma de comunicaciones. Nos adaptamos a lo que tu comité ya tiene resuelto."},
+    {q:"¿Podéis encargaros solo de una parte del congreso?",a:"Sí. Puedes contratarnos para la gestión completa o para servicios concretos: solo la secretaría técnica, solo la plataforma digital o solo la producción del evento. Nos adaptamos a lo que tu comité ya tiene resuelto."},
     {q:"¿Trabajáis con congresos virtuales e híbridos?",a:"Sí. Tenemos experiencia en los tres formatos: presencial, virtual e híbrido. Adaptamos la plataforma, el soporte técnico y la logística al formato de tu congreso."},
     {q:"¿Con cuánta antelación hay que contactar?",a:"Lo ideal es al menos seis meses antes. Dicho esto, también podemos incorporarnos en procesos ya iniciados si el comité necesita apoyo en fases concretas."},
     {q:"¿Qué pasa con los derechos de las grabaciones?",a:"Las grabaciones son propiedad del comité organizador o de la entidad que determine. Intracom las gestiona técnicamente, pero los derechos son siempre vuestros."},
@@ -176,7 +170,7 @@
   }
 
   /* ============ FORM service checks (S12) ============ */
-  const svcOptions=["Secretaría Técnica","Web","Plataforma de comunicaciones","Inscripciones","Soporte técnico","Grabación","Comunicación","Atención a participantes","No lo tengo claro aún"];
+  const svcOptions=["Secretaría Técnica","Plataforma digital integrada","Soporte técnico","Grabación","Comunicación","Atención a participantes","No lo tengo claro aún"];
   const sc=document.getElementById("svcChecks");
   if(sc){
     svcOptions.forEach((o,i)=>{
