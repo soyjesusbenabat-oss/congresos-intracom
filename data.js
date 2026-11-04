@@ -26,7 +26,8 @@
      inc:["Coordinación general","Gestión de documentación","Atención a ponentes","Seguimiento de plazos","Cronograma y asignación de salas","Comunicación continua con el comité","Gestión de viajes de ponentes","Personal en sede el día del evento"]},
     {icon:ic.monitor,name:"Plataforma Digital Integrada",no:"02",
      desc:"Todo el congreso en una sola plataforma propia: la web, el envío y la evaluación de comunicaciones, las inscripciones con pago y factura, el programa, las acreditaciones, la asistencia y los certificados. Cada participante tiene su área privada y el comité sigue el congreso en tiempo real, sin hojas de cálculo.",
-     inc:["Web del congreso con su identidad, en varios idiomas","CFP y difusión en la red Intracom","Envío de propuestas y evaluación en doble ciego","Panel para el comité científico","Inscripción con tarifas por perfil y códigos de descuento","Pago con tarjeta o transferencia y factura automática","Programa interactivo y en PDF","Acreditaciones con QR y control de asistencia","Encuestas y certificados verificables online","Aula virtual para sesiones en línea o híbridas","Área privada para cada participante"]},
+     inc:["Web del congreso con su identidad, en varios idiomas","CFP y difusión en la red Intracom","Envío de propuestas y evaluación en doble ciego","Panel para el comité científico","Inscripción con tarifas por perfil y códigos de descuento","Pago con tarjeta o transferencia y factura automática","Programa interactivo y en PDF","Acreditaciones con QR y control de asistencia","Encuestas y certificados verificables online","Aula virtual para sesiones en línea o híbridas","Área privada para cada participante"],
+     link:{label:"Conoce la herramienta en profundidad",url:"https://www.congresly.com/"}},
     {icon:ic.palette,name:"Identidad Visual y Materiales",no:"03",
      desc:"Creamos la imagen corporativa del congreso y todos los materiales necesarios, tanto digitales como impresos, para que el evento tenga una presencia coherente y profesional.",
      inc:["Logo e identidad corporativa","Cartelería y roll-up","Programa impreso","Acreditaciones y certificados","Producción impresa de materiales","Decoración de la sede"]},
@@ -56,7 +57,7 @@
          <div class="svc-includes">
            <div class="inc-label">Incluye</div>
            <div class="svc-chips">${s.inc.map(x=>`<span class="svc-chip">${check}${x}</span>`).join("")}</div>
-         </div>`);
+         </div>${s.link?`<a class="btn btn-primary svc-link" href="${s.link.url}" target="_blank" rel="noopener">${s.link.label} <span class="arr">→</span></a>`:""}`);
       c.dataset.tab="s"+i;
       panel.appendChild(c);
     });
@@ -71,6 +72,7 @@
         <div class="svc-acc-body"><div class="svc-acc-inner">
           <p class="s-desc" style="color:var(--muted);margin:0 0 16px">${s.desc}</p>
           <div class="svc-chips">${s.inc.map(x=>`<span class="svc-chip">${check}${x}</span>`).join("")}</div>
+          ${s.link?`<a class="btn btn-primary svc-link" href="${s.link.url}" target="_blank" rel="noopener">${s.link.label} <span class="arr">→</span></a>`:""}
         </div></div>`;
       acc.appendChild(item);
     });

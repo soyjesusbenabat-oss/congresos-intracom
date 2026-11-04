@@ -312,6 +312,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.04;let
 .svc-includes{margin-top:28px;border-top:1px dashed var(--border-strong);padding-top:24px}
 .svc-includes .inc-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
 .svc-chips{display:flex;flex-wrap:wrap;gap:9px}
+.svc-link{margin-top:28px;max-width:100%;white-space:normal;text-align:left}
 .svc-chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:9px 15px;font-size:14px;font-weight:500}
 .svc-chip svg{color:var(--accent);flex-shrink:0}
 .svc-figure{position:absolute;right:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--sky) 40%,transparent),transparent 70%);pointer-events:none}
