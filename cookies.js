@@ -147,9 +147,11 @@
     document.head.appendChild(s);
     window.gtag("js", new Date());
     if (CFG.ga) {
-      // Solo estadística, y cada web con sus cookies: sin esto se compartirían entre los subdominios
+      // Solo estadística, y cada web con sus cookies: sin esto se compartirían entre los subdominios.
+      // Tiene que ser «none»: Google ignora el nombre del dominio y sube la cookie al principal
+      window.gtag("set", { cookie_domain: "none" });
       window.gtag("config", CFG.ga, {
-        cookie_domain: location.hostname,
+        cookie_domain: "none",
         allow_google_signals: false,
         allow_ad_personalization_signals: false,
       });
