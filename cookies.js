@@ -273,9 +273,10 @@
     pendiente = setTimeout(function () {
       pendiente = null;
       if (decision() === "si") return;
-      // El diseño reconstruye la página y se lleva por delante la hoja de estilos
+      // El diseño reconstruye la página y se lleva por delante la hoja de estilos y el aviso
       css();
       taparTodo();
+      if (decision() === null) preguntar();
     }, 100);
   }
 
