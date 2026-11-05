@@ -143,9 +143,9 @@
     };
     window.gtag("js", new Date());
     if (CFG.ga) {
-      // Solo estadística, y cada web con sus cookies: sin esto se compartirían entre los subdominios.
-      // Tiene que ser «none» y estar en todas las etiquetas antes de cargar el script: probado que
-      // con el nombre del dominio, o si no va también en la de Ads, Google sube _ga al dominio principal
+      // Solo estadística. «none» pide que las cookies se queden en este subdominio, pero Google no siempre
+      // lo respeta: probado en congresos.portalintracom.com, _ga acaba a menudo en el dominio principal.
+      // Por eso retirarMedicion() borra en los dos sitios y la política de cookies menciona ambos
       window.gtag("set", { cookie_domain: "none" });
       window.gtag("config", CFG.ga, {
         cookie_domain: "none",
