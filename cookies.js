@@ -29,7 +29,9 @@
   },
   "patrones": [],
   "ads": "AW-18495630635",
-  "ga": "G-WE5XKZYB3W"
+  "ga": "G-WE5XKZYB3W",
+  "plataforma": "conferences.portalintracom.com",
+  "politica": null
 };
 
   // Analytics es una finalidad nueva: quien aceptó antes no aceptó esto y hay que volver a preguntar
@@ -48,6 +50,7 @@
     return CFG.textos[lang()] || CFG.textos[CFG.idiomaPorDefecto];
   }
   function enlacePolitica() {
+    if (CFG.politica) return CFG.politica;
     var l = lang();
     return "/legal/cookies" + (l === CFG.idiomaPorDefecto ? "" : "." + l) + ".html";
   }
@@ -186,13 +189,17 @@
     });
   }
 
-  /** Clics en un correo: Analytics no los cuenta por su cuenta. No se envía la dirección. */
-  function contarCorreo(e) {
+  /** Clics en un correo o hacia la inscripción de la plataforma. No se envía la dirección de correo. */
+  function contarClic(e) {
     if (!CFG.ga || !window.gtag || decision() !== "si") return;
     var t = e.target;
     while (t && t !== document.body) {
-      if (t.getAttribute && /^mailto:/i.test(t.getAttribute("href") || "")) {
-        window.gtag("event", "clic_correo", { send_to: CFG.ga });
+      if (t.getAttribute && t.getAttribute("href")) {
+        if (/^mailto:/i.test(t.getAttribute("href"))) {
+          window.gtag("event", "clic_correo", { send_to: CFG.ga });
+        } else if (t.hostname === CFG.plataforma && /\/c\//.test(t.pathname)) {
+          window.gtag("event", "clic_inscripcion", { send_to: CFG.ga, destino: t.pathname });
+        }
         return;
       }
       t = t.parentNode;
@@ -303,7 +310,7 @@
     if (d !== "no") preguntar();
   }
 
-  document.addEventListener("click", contarCorreo);
+  document.addEventListener("click", contarClic);
 
   document.addEventListener("click", function (e) {
     var t = e.target;
