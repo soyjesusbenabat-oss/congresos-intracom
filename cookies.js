@@ -141,14 +141,11 @@
     window.gtag = function () {
       window.dataLayer.push(arguments);
     };
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + (CFG.ga || CFG.ads);
-    document.head.appendChild(s);
     window.gtag("js", new Date());
     if (CFG.ga) {
       // Solo estadística, y cada web con sus cookies: sin esto se compartirían entre los subdominios.
-      // Tiene que ser «none»: Google ignora el nombre del dominio y sube la cookie al principal
+      // Tiene que ser «none» y estar en todas las etiquetas antes de cargar el script: probado que
+      // con el nombre del dominio, o si no va también en la de Ads, Google sube _ga al dominio principal
       window.gtag("set", { cookie_domain: "none" });
       window.gtag("config", CFG.ga, {
         cookie_domain: "none",
@@ -156,7 +153,11 @@
         allow_ad_personalization_signals: false,
       });
     }
-    if (CFG.ads) window.gtag("config", CFG.ads);
+    if (CFG.ads) window.gtag("config", CFG.ads, CFG.ga ? { cookie_domain: "none" } : {});
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + (CFG.ga || CFG.ads);
+    document.head.appendChild(s);
   }
 
   function permisos(valor) {
