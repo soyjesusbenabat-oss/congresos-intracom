@@ -3,9 +3,9 @@
  * la plataforma: no editar a mano.
  *
  * Nada de terceros se carga antes de que la persona decida. Los mapas, los vídeos y los
- * formularios externos se sustituyen por un recuadro con su propio botón, y la etiqueta de medición
- * de Google Ads no se inyecta hasta que se acepta. Quien rechaza sigue teniendo la web completa:
- * solo ve el recuadro en lugar del mapa, con el enlace para abrirlo en su sitio original.
+ * formularios externos se sustituyen por un recuadro con su propio botón, y las etiquetas de Google
+ * Analytics y Google Ads no se inyectan hasta que se acepta. Quien rechaza sigue teniendo la web
+ * completa: solo ve el recuadro en lugar del mapa, con el enlace para abrirlo en su sitio original.
  *
  * La decisión se guarda en el navegador de quien visita (localStorage), que es almacenamiento
  * técnico exento de consentimiento: sin él habría que volver a preguntar en cada página.
@@ -24,14 +24,16 @@
       "bloqueado": "Este contenido es de un tercero y puede instalar cookies en su navegador. No se carga hasta que usted lo autoriza.",
       "cargar": "Cargar este contenido",
       "abrirFuera": "Abrirlo en su web",
-      "aviso": "Esta web no instala cookies propias. Utiliza la etiqueta de medición de Google Ads para saber qué anuncios funcionan, y esa etiqueta instala cookies de Google que pueden usarse con finalidad publicitaria. No la cargamos hasta que usted lo decida."
+      "aviso": "Esta web utiliza Google Analytics para saber cuántas personas la visitan y qué páginas consultan, y la etiqueta de medición de Google Ads para saber qué anuncios funcionan. Todo ello puede instalar cookies, algunas con finalidad publicitaria. No cargamos nada de eso hasta que usted lo decida."
     }
   },
   "patrones": [],
-  "ads": "AW-18495630635"
+  "ads": "AW-18495630635",
+  "ga": "G-WE5XKZYB3W"
 };
 
-  var CLAVE = "intracom_cookies_v1";
+  // Analytics es una finalidad nueva: quien aceptó antes no aceptó esto y hay que volver a preguntar
+  var CLAVE = "intracom_cookies_" + (CFG.ga ? "v2" : "v1");
   var ID_BANNER = "intracom-cookies";
   var ID_CSS = "intracom-cookies-css";
 
@@ -124,11 +126,16 @@
     for (var i = 0; i < huecos.length; i++) destapar(huecos[i]);
   }
 
-  // ---------- Etiqueta de medición ----------
+  // ---------- Etiquetas de medición ----------
 
   var medicionPuesta = false;
   function medicion() {
-    if (medicionPuesta || !CFG.ads) return;
+    if (CFG.ga) window["ga-disable-" + CFG.ga] = false;
+    if (medicionPuesta) {
+      permisos("granted");
+      return;
+    }
+    if (!CFG.ads && !CFG.ga) return;
     medicionPuesta = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () {
@@ -136,10 +143,57 @@
     };
     var s = document.createElement("script");
     s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + CFG.ads;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + (CFG.ga || CFG.ads);
     document.head.appendChild(s);
     window.gtag("js", new Date());
-    window.gtag("config", CFG.ads);
+    if (CFG.ga) {
+      // Solo estadística, y cada web con sus cookies: sin esto se compartirían entre los subdominios
+      window.gtag("config", CFG.ga, {
+        cookie_domain: location.hostname,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+      });
+    }
+    if (CFG.ads) window.gtag("config", CFG.ads);
+  }
+
+  function permisos(valor) {
+    if (!window.gtag) return;
+    window.gtag("consent", "update", {
+      analytics_storage: valor,
+      ad_storage: valor,
+      ad_user_data: valor,
+      ad_personalization: valor,
+    });
+  }
+
+  /** Retirar el permiso tiene que surtir efecto: se apagan las etiquetas y se borran sus cookies. */
+  function retirarMedicion() {
+    if (CFG.ga) window["ga-disable-" + CFG.ga] = true;
+    permisos("denied");
+    var partes = location.hostname.split(".");
+    var dominios = [""];
+    for (var i = 0; i < partes.length - 1; i++) dominios.push("; domain=." + partes.slice(i).join("."));
+    document.cookie.split(";").forEach(function (c) {
+      var nombre = c.split("=")[0].trim();
+      if (!/^(_ga|_gcl_|_gid)/.test(nombre)) return;
+      dominios.forEach(function (d) {
+        document.cookie = nombre + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + d;
+      });
+    });
+  }
+
+  /** Clics en un correo: Analytics no los cuenta por su cuenta. No se envía la dirección. */
+  function contarCorreo(e) {
+    if (!CFG.ga || !window.gtag || decision() !== "si") return;
+    var t = e.target;
+    while (t && t !== document.body) {
+      if (t.getAttribute && /^mailto:/i.test(t.getAttribute("href") || "")) {
+        window.gtag("event", "clic_correo", { send_to: CFG.ga });
+        return;
+      }
+      t = t.parentNode;
+    }
   }
 
   // ---------- Aviso ----------
@@ -220,6 +274,7 @@
     guardar("no");
     quitarBanner();
     taparTodo();
+    retirarMedicion();
   }
 
   function abrir() {
@@ -244,6 +299,8 @@
     taparTodo();
     if (d !== "no") preguntar();
   }
+
+  document.addEventListener("click", contarCorreo);
 
   document.addEventListener("click", function (e) {
     var t = e.target;

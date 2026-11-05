@@ -151,6 +151,8 @@
           okBox?.classList.add("show");
           // conversión de Google Ads: solo cuando el envío ha salido bien
           if(typeof gtag==="function") gtag("event","conversion",{send_to:"AW-18495630635/A0kQCMSarZsdEKvas_NE",value:1.0,currency:"EUR"});
+          // y en Analytics, para distinguir cuál de los dos formularios se ha enviado
+          if(typeof gtag==="function") gtag("event","generate_lead",{send_to:"G-WE5XKZYB3W",formulario:form.id});
         } else {
           btn.disabled=false; btn.innerHTML=btnHTML;
           alert("Hubo un error al enviar. Por favor escríbenos a info@intracom.es");
