@@ -231,6 +231,23 @@
 .marco img { display: block; width: 100%; height: auto; }
 .marco__nota { display: none; }
 
+/* Asistente de IA */
+.pantallas__texto h3 em { font-family: var(--font-serif); font-weight: 500; color: var(--accent); }
+.demo--anidada { background: var(--surface-2); margin-top: 28px; padding: 32px; }
+.demo--anidada .demo__texto h4 { font-size: 20px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 10px; }
+.chat { display: flex; flex-direction: column; gap: 10px; }
+.burbuja { max-width: 86%; font-size: 14px; line-height: 1.45; padding: 10px 14px; border-radius: 16px; }
+.burbuja--yo { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 4px; min-height: 40px; }
+.burbuja--ia { align-self: flex-start; background: var(--surface-2); color: var(--ink); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+.propuesta { align-self: flex-start; display: grid; gap: 6px; max-width: 92%; font-size: 13.5px; background: var(--surface); border: 1px solid var(--border-strong); border-radius: 14px; padding: 12px 14px; }
+.propuesta small { color: var(--muted); font-size: 12px; }
+.propuesta__enlace { font-weight: 700; color: var(--blue); }
+.propuesta__texto { color: var(--muted); line-height: 1.45; }
+.propuesta__botones { display: flex; gap: 8px; margin-top: 4px; }
+.propuesta__botones i, .propuesta__botones u { font-style: normal; text-decoration: none; font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 5px 12px; }
+.propuesta__botones i { background: var(--blue); color: #fff; }
+.propuesta__botones u { border: 1px solid var(--border-strong); color: var(--ink); }
+
 /* ---------- Congresly ---------- */
 .congresly { background: var(--navy); color: var(--navy-text); padding-block: clamp(64px, 9vh, 104px); }
 .congresly__fila { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -287,6 +304,7 @@
   .cadena li { font-size: 12.5px; }
   .hilo-marco { top: 70px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
   .marco__nota { display: block; font-size: 12.5px; color: var(--muted); text-align: center; padding: 8px; border-top: 1px solid var(--border); background: var(--surface); }
+  .demo--anidada { padding: 14px; margin-top: 20px; }
   .pantallas { padding: 18px; border-radius: 20px; scroll-margin-top: 130px; }
   .demo { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 18px; border-radius: 20px; scroll-margin-top: 130px; }
   .demo__texto { display: contents; }

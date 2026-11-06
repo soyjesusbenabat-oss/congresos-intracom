@@ -125,6 +125,7 @@
         if (!en.isIntersecting) return;
         var indice = -1;
         marcas.forEach(function (a, i) { if (a.getAttribute("href") === "#" + en.target.id) indice = i; });
+        if (indice < 0) return;
         marcas.forEach(function (a, i) {
           a.classList.toggle("activo", i === indice);
           a.classList.toggle("hecho", i < indice);
