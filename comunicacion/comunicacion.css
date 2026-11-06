@@ -216,6 +216,21 @@
 .plazo span { margin-left: auto; flex: none; }
 .plazo--ahora { border-color: var(--accent); background: var(--red-50); }
 
+/* Pantallas reales del panel */
+.pantallas { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radio-demo); padding: 40px; scroll-margin-top: 150px; }
+.pantallas__texto { max-width: 720px; }
+.pantallas__texto h3 { font-size: clamp(24px, 2.3vw, 30px); font-weight: 800; letter-spacing: -.025em; margin-bottom: 14px; text-wrap: balance; }
+.pantallas__texto p { color: var(--muted); margin: 0; }
+.pestanas { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
+.pestanas button { font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; cursor: pointer; transition: background .2s, color .2s; }
+.pestanas button:hover { color: var(--ink); }
+.pestanas button[aria-selected="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+.marco { display: block; border: 1px solid var(--border-strong); border-radius: 16px; overflow: hidden; background: #F4F6F5; box-shadow: var(--shadow-lg); }
+.marco__barra { display: flex; gap: 6px; padding: 10px 14px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+.marco__barra i { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
+.marco img { display: block; width: 100%; height: auto; }
+.marco__nota { display: none; }
+
 /* ---------- Congresly ---------- */
 .congresly { background: var(--navy); color: var(--navy-text); padding-block: clamp(64px, 9vh, 104px); }
 .congresly__fila { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -271,6 +286,8 @@
   .cadena::before { display: none; }
   .cadena li { font-size: 12.5px; }
   .hilo-marco { top: 70px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+  .marco__nota { display: block; font-size: 12.5px; color: var(--muted); text-align: center; padding: 8px; border-top: 1px solid var(--border); background: var(--surface); }
+  .pantallas { padding: 18px; border-radius: 20px; scroll-margin-top: 130px; }
   .demo { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 18px; border-radius: 20px; scroll-margin-top: 130px; }
   .demo__texto { display: contents; }
   .demo__num { order: 0; align-self: flex-start; }

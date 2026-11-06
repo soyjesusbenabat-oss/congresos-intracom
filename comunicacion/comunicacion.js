@@ -134,8 +134,20 @@
       });
     }, { rootMargin: "-45% 0px -45% 0px" });
     demos.forEach(function (d) { verCapitulo.observe(d.raiz); });
+    document.querySelectorAll(".pantallas").forEach(function (el) { verCapitulo.observe(el); });
   } else demos.forEach(function (d) { d.mostrar(true); });
   document.addEventListener("visibilitychange", function () {
     demos.forEach(function (d) { if (document.hidden) clearTimeout(d.temporizador); else if (d.paso) d.programar(); });
+  });
+
+  // Pestañas de las pantallas reales
+  document.querySelectorAll(".pantallas").forEach(function (bloque) {
+    var botones = Array.prototype.slice.call(bloque.querySelectorAll(".pestanas button"));
+    var vistas = bloque.querySelectorAll(".pantallas__vista");
+    botones.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        botones.forEach(function (x, j) { x.setAttribute("aria-selected", String(i === j)); vistas[j].hidden = i !== j; });
+      });
+    });
   });
 })();
