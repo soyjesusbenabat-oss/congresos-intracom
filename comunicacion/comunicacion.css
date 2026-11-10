@@ -281,10 +281,23 @@
 .boton-claro:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
 
 /* ---------- Tableta ---------- */
+/* ---------- Congresos que organizamos ---------- */
+.congresos { padding-block: clamp(64px, 9vh, 104px); background: var(--surface-2); border-top: 1px solid var(--border); }
+.congresos__rejilla { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.congreso { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 12px 12px 22px; transition: transform .25s ease, box-shadow .25s ease; }
+.congreso:hover, .congreso:focus-visible { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.congreso__web { display: block; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 18px; background: var(--paper); }
+.congreso__web img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.congreso__ed, .congreso__nombre, .congreso__tema, .congreso__sede { padding-inline: 10px; }
+.congreso__ed { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.congreso__nombre { font-family: var(--font-display); font-size: 21px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
+.congreso__tema { font-size: 14.5px; color: var(--muted); line-height: 1.45; margin: 6px 0 14px; }
+.congreso__sede { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--border-strong); margin-inline: 10px; padding-inline: 0; font-size: 13.5px; font-weight: 600; }
+
 @media (max-width: 1060px) {
   .demo, .demo--inversa { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 28px; }
   .demo--inversa .demo__texto { order: 0; }
-  .equipo__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .equipo__rejilla, .congresos__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .congresly__fila { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 860px) {
@@ -327,7 +340,7 @@
   .acreditacion .qr { width: 80px; height: 80px; }
   .movil { transform: translate(64px, 8px) scale(.88); }
   .demo[data-paso="1"] .movil { transform: translate(74px, 8px) scale(.82); opacity: .55; }
-  .congresly__lista, .equipo__rejilla { grid-template-columns: minmax(0, 1fr); }
+  .congresly__lista, .equipo__rejilla, .congresos__rejilla { grid-template-columns: minmax(0, 1fr); }
   .cierre__botones .btn { width: 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
